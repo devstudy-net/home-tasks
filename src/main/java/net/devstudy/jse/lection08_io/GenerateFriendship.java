@@ -29,14 +29,25 @@ public class GenerateFriendship {
 
 		Map<String, Integer> friendsCount = new HashMap<>();
 		Map<String, Account> accountsMap = new HashMap<>();
-		Random r = new Random();
 		// Генерируем случайное количество друзей для каждого аккаунта
+		populateMaps(friendsCount, accountsMap, accounts, minFriends, maxFriends);
+		// Создание друзей, в соответствии с сгенерированым количеством
+		// friendsCount
+		createFriendship(accounts, friendsCount, accountsMap);
+		// Запись дружбы в требуемом формате
+		writeFriends(accountsMap);
+	}
+	
+	private static void populateMaps(Map<String, Integer> friendsCount, Map<String, Account> accountsMap, List<String> accounts, int minFriends, int maxFriends) {
+		Random r = new Random();
 		for (String account : accounts) {
 			friendsCount.put(account, (r.nextInt((maxFriends + 1) / 2 - minFriends) + minFriends));
 			accountsMap.put(account, new Account(account));
 		}
-		// Создание друзей, в соответствии с сгенерированым количеством
-		// friendsCount
+	}
+	
+	private static void createFriendship(List<String> accounts, Map<String, Integer> friendsCount, Map<String, Account> accountsMap) {
+		Random r = new Random();
 		for (Map.Entry<String, Integer> friend : friendsCount.entrySet()) {
 			String name = friend.getKey();
 			Account account = accountsMap.get(name);
@@ -53,7 +64,9 @@ public class GenerateFriendship {
 				}
 			}
 		}
-		// Запись дружбы в требуемом формате
+	}
+	
+	private static void writeFriends(Map<String, Account> accountsMap) throws IOException{
 		int min = Integer.MAX_VALUE;
 		int max = Integer.MIN_VALUE;
 		try (PrintWriter pw = new PrintWriter(new File("friends.txt"))) {
