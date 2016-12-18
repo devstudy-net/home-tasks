@@ -10,6 +10,7 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * 
@@ -22,11 +23,27 @@ public class FileSearcher {
 
 	public FileSearcher(Path rootDir, String pattern) {
 		super();
+		validateRootDir(rootDir);
 		this.rootDir = rootDir;
+		validatePattern(pattern);
+		this.pattern = pattern.toLowerCase();
+	}
+	
+	private void validateRootDir(Path rootDir) {
+		Objects.requireNonNull(rootDir);
+		if(!Files.exists(rootDir)){
+			throw new IllegalArgumentException("rootDir not found: "+rootDir);
+		}
+		if(!Files.isDirectory(rootDir)){
+			throw new IllegalArgumentException("rootDir is not directory: "+rootDir);
+		}
+	}
+	
+	private void validatePattern(String pattern) {
+		Objects.requireNonNull(pattern);
 		if (pattern.contains("*") && pattern.contains("?")) {
 			throw new IllegalArgumentException("Invalid pattern: " + pattern);
 		}
-		this.pattern = pattern.toLowerCase();
 	}
 
 	public List<Path> find() throws IOException {
