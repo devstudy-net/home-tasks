@@ -47,7 +47,7 @@ public class FileSearcher {
 		String fileName = file.getFileName().toString().toLowerCase();
 		if (pattern.contains("?")) {
 			return matchBySymbols(fileName);
-		} else if (pattern.contains("?") || pattern.contains("*")) {
+		} else if (pattern.contains("*")) {
 			return matchByAsterisk(fileName);
 		} else {
 			return pattern.equals(fileName);
