@@ -33,18 +33,17 @@ public class GenerateFakeAccounts {
 		Collections.shuffle(femaleNames);
 		Collections.shuffle(surnames);
 
+		generate("male-accounts.txt", countMale, maleNames, surnames);
+		generate("female-accounts.txt", countFemale, femaleNames, surnames);
+	}
+	
+	private static void generate(String fileName, int maxCount, List<String> names, List<String> surnames) throws IOException {
 		// Фамилии не должны повторяться, поэтому удаляем фамилию после
 		// использования из списка и обязательно проверяем наличие данных для
 		// генерации, чтобы не было IndexOutOfBoundsException
-		try (PrintWriter pw = new PrintWriter(new FileWriter(new File("male-accounts.txt")))) {
-			for (int i = 0; i < countMale && i < maleNames.size() && !surnames.isEmpty(); i++) {
-				pw.println(maleNames.get(i) + " " + surnames.remove(0));
-			}
-			pw.flush();
-		}
-		try (PrintWriter pw = new PrintWriter(new FileWriter(new File("female-accounts.txt")))) {
-			for (int i = 0; i < countFemale && i < maleNames.size() && !surnames.isEmpty(); i++) {
-				pw.println(femaleNames.get(i) + " " + surnames.remove(0));
+		try (PrintWriter pw = new PrintWriter(new FileWriter(new File(fileName)))) {
+			for (int i = 0; i < maxCount && i < names.size() && !surnames.isEmpty(); i++) {
+				pw.println(names.get(i) + " " + surnames.remove(0));
 			}
 			pw.flush();
 		}
