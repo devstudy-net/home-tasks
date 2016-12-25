@@ -19,7 +19,7 @@ public class CalculateSqrt {
 			} else {
 				double value = Double.parseDouble(cmd);
 				if (value >= 0) {
-					System.out.println(Math.sqrt(value));
+					System.out.println("sqrt(" + value + ")=" + Math.sqrt(value));
 				} else {
 					System.out.println("Invalid argument");
 				}
