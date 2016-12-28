@@ -24,7 +24,7 @@ public class WorkWithArray {
 		}
 		return minIndex;
 	}
-	
+
 	public static int findMax(int[] array) {
 		int maxElement = Integer.MIN_VALUE;
 		int maxIndex = -1;
@@ -38,16 +38,16 @@ public class WorkWithArray {
 	}
 
 	public static void main(String[] args) {
-		int array[] = new int [20];
+		int array[] = new int[20];
 		populate(array, 1, 10);
-		System.out.println(Arrays.toString(array));
+		System.out.println("Test array = " + Arrays.toString(array));
 		int minIndex = findMin(array);
 		int maxIndex = findMax(array);
-		if(minIndex != -1) {
-			System.out.println("Min element = "+array[minIndex]);
+		if (minIndex != -1) {
+			System.out.println("Min element = " + array[minIndex]);
 		}
-		if(maxIndex != -1) {
-			System.out.println("Max element = "+array[maxIndex]);
+		if (maxIndex != -1) {
+			System.out.println("Max element = " + array[maxIndex]);
 		}
 	}
 
