@@ -8,11 +8,7 @@ package net.devstudy.basic.lection9_string;
 public class StringUtils {
 
 	public static String capitalizeWord(String word) {
-		if (word == null) {
-			return null;
-		} else if (word.isEmpty()) {
-			return word;
-		} else if (word.length() == 1) {
+		if (word.length() <= 1) {
 			return word.toUpperCase();
 		} else {
 			return Character.toUpperCase(word.charAt(0)) + word.substring(1).toLowerCase();
@@ -35,12 +31,10 @@ public class StringUtils {
 	
 	public static String join(String[] array, String delimeter) {
 		StringBuilder result = new StringBuilder();
-		if(array != null) {
-			for(int i=0;i<array.length;i++) {
-				result.append(array[i]);
-				if(i != array.length-1) {
-					result.append(delimeter);
-				}
+		for(int i=0;i<array.length;i++) {
+			result.append(array[i]);
+			if(i != array.length-1) {
+				result.append(delimeter);
 			}
 		}
 		return result.toString();
