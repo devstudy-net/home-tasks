@@ -44,9 +44,11 @@ public class WorkWithArray {
 		int minIndex = findMin(array);
 		int maxIndex = findMax(array);
 		if (minIndex != -1) {
+			System.out.print("Index of min element = " + minIndex + ",  ");
 			System.out.println("Min element = " + array[minIndex]);
 		}
 		if (maxIndex != -1) {
+			System.out.print("Index of max element = " + maxIndex + ",  ");
 			System.out.println("Max element = " + array[maxIndex]);
 		}
 	}
