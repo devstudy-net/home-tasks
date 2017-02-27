@@ -5,7 +5,7 @@ package net.devstudy.basic.practics.practic4_recursion;
  * @author devstudy
  * @see http://devstudy.net
  */
-public class GhowGrid {
+public class ShowGrid {
 
 	public static void main(String[] args) {
 		int rows = 3;
