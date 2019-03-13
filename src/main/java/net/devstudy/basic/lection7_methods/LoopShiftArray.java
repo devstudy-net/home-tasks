@@ -23,7 +23,7 @@ public class LoopShiftArray {
 			if (destIndex >= array.length) {
 				destIndex = destIndex % array.length;
 			} else if (destIndex < 0) {
-				destIndex = array.length - 1 + destIndex;
+				destIndex = array.length + destIndex;
 			}
 			array[destIndex] = arrayCopy[i];
 		}
